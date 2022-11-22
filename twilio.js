@@ -14,9 +14,9 @@ export default function sendMessage(to, body, dryRun = false) {
     return { sid: "DRY_RUN", to, body };
   }
 
-  // return client.messages.create({
-  //   body,
-  //   to,
-  //   from: twilioPhoneNumber,
-  // });
+  return client.messages.create({
+    body,
+    to,
+    from: twilioPhoneNumber,
+  });
 }
