@@ -1,0 +1,26 @@
+{
+  "name": "secret-santa",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "generate": "node --experimental-json-modules generateSantas.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "notify": "node --experimental-json-modules notifySantas.js",
+    "reveal": "node --experimental-json-modules decryptSantas.js",
+    "secret-santa": "yarn generate && yarn test && yarn notify"
+  },
+  "jest": {
+    "transform": {}
+  },
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.3",
+    "handlebars": "^4.7.7",
+    "twilio": "^3.83.2"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}
