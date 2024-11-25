@@ -61,3 +61,13 @@ yarn reveal
 ```
 
 This will decrypt the file and save it to `output/decryptedSecretSanta.json` in plaintext.
+
+## Generate messages
+
+This is useful if you want to send all the messages pre-prepared for someone else to send on your behalf.
+
+```bash
+yarn messages
+```
+
+This will generate a folder with the current timestamp with all the messages in plain text and the name and number of the recipient at the top of each file.

@@ -9,6 +9,7 @@
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "notify": "node --experimental-json-modules notifySantas.js",
     "reveal": "node --experimental-json-modules decryptSantas.js",
+    "messages": "node --experimental-json-modules generateMessages.js",
     "secret-santa": "yarn generate && yarn test && yarn notify"
   },
   "jest": {

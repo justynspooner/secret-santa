@@ -1,7 +1,7 @@
-import encryptedSecretSanta from "./output/secretSanta.json";
+import { decrypt } from "./encrypt.js";
 import blacklist from "./input/blacklist.json";
 import participants from "./input/participants.json";
-import { decrypt } from "./encrypt.js";
+import encryptedSecretSanta from "./output/secretSanta.json";
 
 const secretSanta = JSON.parse(decrypt(encryptedSecretSanta));
 
@@ -30,7 +30,7 @@ describe("secretSanta", () => {
 
   it("should not have any participants buying for someone on their blacklist", () => {
     const buyingForBlacklistedPerson = secretSanta.filter(
-      ({ name, buyingFor }) => blacklist[name].includes(buyingFor)
+      ({ name, buyingFor }) => blacklist[name]?.includes(buyingFor)
     );
 
     expect(buyingForBlacklistedPerson.length).toBe(0);

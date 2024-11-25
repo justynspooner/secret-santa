@@ -1,5 +1,5 @@
-import { encrypt, decrypt } from "./encrypt.js";
 import fs from "fs";
+import { decrypt, encrypt } from "./encrypt.js";
 
 export function readJSON({ path, shouldDecrypt = false }) {
   if (!fs.existsSync(path)) {
@@ -24,4 +24,12 @@ export function writeJSON({ fileName, data, shouldEncrypt = false }) {
   }
 
   fs.writeFileSync(`./output/${fileName}.json`, JSON.stringify(data, null, 2));
+}
+
+export function writePlainText({ folder, fileName, data }) {
+  if (!fs.existsSync(`./output/${folder}`)) {
+    fs.mkdirSync(`./output/${folder}`);
+  }
+
+  fs.writeFileSync(`./output/${folder}/${fileName}.txt`, data);
 }

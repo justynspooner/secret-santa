@@ -1,5 +1,5 @@
-import participants from "./input/participants.json";
-import blacklist from "./input/blacklist.json";
+import blacklist from "./input/blacklist.json" with { type: "json" };
+import participants from "./input/participants.json" with { type: "json" };
 import { writeJSON } from "./io.js";
 
 export default function generateSecretSanta() {
@@ -27,7 +27,7 @@ export default function generateSecretSanta() {
         const { name, number } = participant;
         const filteredParticipantsToBuyFor = participantsToBuyFor.filter(
           (option) =>
-            option.name !== name && !blacklist[name].includes(option.name)
+            option.name !== name && !blacklist[name]?.includes(option.name)
         );
 
         if (filteredParticipantsToBuyFor.length === 0) {
@@ -46,7 +46,8 @@ export default function generateSecretSanta() {
         participantsToBuyFor.splice(indexForName, 1);
         return { name, number, buyingFor };
       });
-    } catch {
+    } catch (e) {
+      console.log(e);
       secretSantas = null;
       attempt++;
     }
